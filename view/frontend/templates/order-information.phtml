@@ -1,0 +1,28 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Mathanagopal\OrderSummary\ViewModel\OrderInformationViewModel $productInfoVM */
+$productInfoVM    = $block->getData('order_information_vm');
+$orderDetailsInfo = $productInfoVM->getOrderSummary();
+?>
+<div class="order-product-info-table-wrapper">
+    <h2><?= $block->escapeHtml(__("Order Details")) ?></h2>
+    <h3><?= $block->escapeHtml(__("Below is the summary of the order.")) ?></h3>
+    <table class="order-product-info-table">
+        <thead>
+        <tr>
+            <th colspan="2"><?= $block->escapeHtml(__('Shipping Address')) ?></th>
+            <th colspan="2"><?= $block->escapeHtml(__('Shipping Method')) ?></th>
+            <th class="table-number" colspan="2"><?= $block->escapeHtml(__('Billing Address')) ?></th>
+            <th class="table-number" colspan="2"><?= $block->escapeHtml(__('Payment Method')) ?></th>
+        </tr>
+        </thead>
+        <tr>
+            <td colspan="2"><?=/**@noEscape*/ $orderDetailsInfo['shipping_address']; ?></td>
+            <td colspan="2"><?= $block->escapeHtml(__($orderDetailsInfo['shipping_method'])); ?></td>
+            <td colspan="2"><?=/**@noEscape*/ $orderDetailsInfo['billing_address']; ?></td>
+            <td colspan="2"><?= $block->escapeHtml(__($orderDetailsInfo['payment_method'])); ?></td>
+        </tr>
+    </table>
+</div>
+
+

@@ -1,0 +1,42 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Mathanagopal\OrderSummary\ViewModel\ProductInformationViewModel $productInfoVM */
+$productInfoVM    = $block->getData('product_information_vm');
+$orderProductInfo = $productInfoVM->getOrderedProductsData();
+?>
+<div class="order-product-info-table-wrapper">
+    <h2><?= $block->escapeHtml(__("Product Details")) ?></h2>
+    <h3><?= $block->escapeHtml(__("Below is the details of the product.")) ?></h3>
+    <table class="order-product-info-table">
+        <thead>
+        <tr>
+            <th colspan="3"><?= $block->escapeHtml(__('Product Name')) ?></th>
+            <th colspan="2"><?= $block->escapeHtml(__('SKU')) ?></th>
+            <th class="table-number" colspan="2"><?= $block->escapeHtml(__('Price')) ?></th>
+            <th class="table-number" colspan="2"><?= $block->escapeHtml(__('Qty')) ?></th>
+            <th class="table-number" colspan="2"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+        </tr>
+        </thead>
+        <?php foreach ($orderProductInfo as $item) : ?>
+            <tr>
+                <td colspan="3">
+                    <?= $block->escapeHtml($item['name']); ?>
+                    <?php if ($item['productOptions']): ?>
+                        <?php foreach ($item['productOptions'] as $option): ?>
+                            <dl>
+                                <dt><?= $block->escapeHtml($option['label']) ?></dt>
+                                <dd><?= $block->escapeHtml($option['value']) ?></dd>
+                            </dl>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </td>
+                <td colspan="2"><?= $block->escapeHtml($item['sku']); ?></td>
+                <td colspan="2"><?= $block->escapeHtml($item['price']); ?></td>
+                <td colspan="2"><?= $block->escapeHtml($item['qty']); ?></td>
+                <td colspan="2"><?= $block->escapeHtml($item['subtotal']); ?></td>
+            </tr>
+        <?php endforeach ?>
+    </table>
+</div>
+
+

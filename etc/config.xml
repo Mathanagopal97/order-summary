@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <sales>
+            <order_summary>
+                <show_product_summary>1</show_product_summary>
+                <show_order_information>1</show_order_information>
+            </order_summary>
+        </sales>
+    </default>
+</config>

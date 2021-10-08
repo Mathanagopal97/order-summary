@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="order.success.additional.info">
+            <block name="onepage.success.product_information"
+                   template="Mathanagopal_OrderSummary::product-items.phtml"
+                   ifconfig="sales/order_summary/show_product_summary">
+                <arguments>
+                    <argument name="product_information_vm" xsi:type="object">
+                        Mathanagopal\OrderSummary\ViewModel\ProductInformationViewModel
+                    </argument>
+                </arguments>
+            </block>
+            <block name="onepage.success.order_information"
+                   template="Mathanagopal_OrderSummary::order-information.phtml"
+                   ifconfig="sales/order_summary/show_order_information">
+                <arguments>
+                    <argument name="order_information_vm" xsi:type="object">
+                        Mathanagopal\OrderSummary\ViewModel\OrderInformationViewModel
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
